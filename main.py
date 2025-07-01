@@ -536,14 +536,8 @@ def main():
             
             for i, chat in enumerate(reversed(st.session_state.chat_history)):
                 with st.expander(f"Q: {chat['question'][:60]}{'...' if len(chat['question']) > 60 else ''}", expanded=(i==0)):
-                    
                     st.markdown(f"**❓ Question:** {chat['question']}")
-                    
-                    confidence_color = "🟢" if chat['confidence'] > 0.15 else "🟡" if chat['confidence'] > 0.08 else "🔴"
-                    confidence_text = "High" if chat['confidence'] > 0.15 else "Medium" if chat['confidence'] > 0.08 else "Low"
-                    
                     st.markdown(f"**✅ Answer:** {chat['answer']}")
-                    st.markdown(f"**📊 Confidence:** {confidence_color} {confidence_text} ({chat['confidence']:.3f})")
                     st.markdown(f"**🕒 Time:** {chat['timestamp']}")
     
     with col2:
